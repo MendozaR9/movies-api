@@ -1,0 +1,123 @@
+[
+  {
+    "title": "Black Hawk Down",
+    "rating": "5",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYWMwMzQxZjQtODM1YS00YmFiLTk1YjQtNzNiYWY1MDE4NTdiXkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_SX300.jpg",
+    "year": "2001",
+    "genre": "Drama, History, War",
+    "director": "Ridley Scott",
+    "plot": "160 elite U.S. soldiers drop into Somalia to capture two top lieutenants of a renegade warlord and find themselves in a desperate battle with a large force of heavily-armed Somalis.",
+    "actors": "Josh Hartnett, Ewan McGregor, Tom Sizemore, Eric Bana",
+    "id": 2
+  },
+  {
+    "title": "Tenet",
+    "rating": "5",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYzg0NGM2NjAtNmIxOC00MDJmLTg5ZmYtYzM0MTE4NWE2NzlhXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_SX300.jpg",
+    "year": "2020",
+    "genre": "  Action,   Sci-Fi",
+    "director": "Christopher Nolan",
+    "plot": "Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.",
+    "actors": "Elizabeth Debicki, Robert Pattinson, John David Washington, Aaron Taylor-Johnson",
+    "id": 3
+  },
+  {
+    "title": "Resident Evil",
+    "rating": "5",
+    "poster": "https://m.media-amazon.com/images/M/MV5BZmI1ZGRhNDYtOGVjZC00MmUyLThlNTktMTQyZGE3MzE1ZTdlXkEyXkFqcGdeQXVyNDE5MTU2MDE@._V1_SX300.jpg",
+    "year": "2002",
+    "genre": " Action,  Horror,  Sci-Fi",
+    "director": "Paul W.S. Anderson",
+    "plot": "A special military unit fights a powerful, out-of-control supercomputer and hundreds of scientists who have mutated into flesh-eating creatures after a laboratory accident.",
+    "actors": "Ryan McCluskey, Oscar Pearce, Indra Ové, Anna Bolt",
+    "id": 4
+  },
+  {
+    "title": "Blade",
+    "rating": "3",
+    "poster": "../img/movie.jpg",
+    "year": "1998",
+    "genre": "action,  drama",
+    "director": "Stephen Norrington",
+    "plot": "A half-vampire, half-mortal man becomes a protector of the mortal race, while slaying evil vampires.",
+    "actors": "Wesley Snipes, Stephen Dorff, Kris Kristofferson, N'Bushe Wright, Donal Logue",
+    "id": 6
+  },
+  {
+    "title": "Top Gun",
+    "rating": "3",
+    "poster": "../img/movie.jpg",
+    "year": "1986",
+    "genre": "Action,  Drama",
+    "director": "Joseph Kosinski",
+    "plot": "As students at the United States Navy's elite fighter weapons school compete to be best in the class, one daring young pilot learns a few things from a civilian instructor that are not taught in the classroom.",
+    "actors": "Tom Cruise",
+    "id": 7
+  },
+  {
+    "title": "Shawshank Redemption",
+    "rating": "5",
+    "poster": "../img/movie4.jpg",
+    "year": "1994",
+    "genre": "Drama",
+    "director": "Frank Darabont",
+    "plot": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "actors": "Morgan Freeman, Tim Robbins",
+    "id": 9
+  },
+  {
+    "title": "Saving Private Ryan",
+    "rating": "4/5",
+    "poster": "../img/movie2.jpg",
+    "year": "1998",
+    "genre": "Action , War",
+    "director": "Steven Spielberg",
+    "plot": "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.",
+    "actors": "Tom Hanks, ",
+    "id": 10
+  },
+  {
+    "title": "Accepted",
+    "rating": "3/5",
+    "poster": "../img/movie.jpg",
+    "year": "2006",
+    "genre": "Comedy",
+    "director": "Steve Pink",
+    "plot": "A high school slacker who's rejected by every school he applies to opts to create his own institution of higher learning, the South Harmon Institute of Technology, on a rundown piece of property near his hometown.",
+    "actors": "Justin Long, Jonah Hill, Blake Lively",
+    "id": 11
+  },
+  {
+    "title": "clorox",
+    "rating": "5/5",
+    "poster": "../img/movie3.jpg",
+    "year": "1999",
+    "genre": "Action , Fantasy , Romance",
+    "director": "cds",
+    "plot": "dcsfvdbf",
+    "actors": "clorox",
+    "id": 19
+  },
+  {
+    "title": "clorox",
+    "rating": "5/5",
+    "poster": "../img/movie4.jpg",
+    "year": "1999",
+    "genre": "Action , Fantasy , Romance",
+    "director": "cds",
+    "plot": "dcsfvdbf",
+    "actors": "clorox",
+    "id": 20
+  },
+  {
+    "title": "clorox 4",
+    "rating": "5/5",
+    "poster": "../img/movie4.jpg",
+    "year": "2000",
+    "genre": " Action ,  Fantasy ,  Romance,  comedy",
+    "director": "pop",
+    "plot": "dcsfvdbf jidnsjoni",
+    "actors": "clorox i",
+    "id": 21
+  }
+]
