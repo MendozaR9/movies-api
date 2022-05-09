@@ -33,20 +33,26 @@ public class MoviesController {
                 .orElse(null);
    }
 
-
-
-    private  List<Movie>setMovie(){
+    private  List<Movie>setMovie() {
         List<Movie> movie = new ArrayList<>();
-        movie.add(new Movie(1,"Test Movie", "2024","Test director", "actor 1, actor 2", " 10", "something","Action",
+        movie.add(new Movie(1, "Test Movie", "2024", "Test director", "actor 1, actor 2", " 10", "Action",
                 "Insert something about the plot."));
         movie.add(new Movie(2, "The Big Lebowski",
                 "1995", "The Cohen Bros",
                 "Jeff Bridges, John Goodman, Steve Buscemi",
-                "idk bro", "idk","comedy, drama?",
+                "idk bro", "comedy, drama?",
                 "the dude just wanted to relax and go bowling"));
         return movie;
     }
+        @PostMapping
+        public void create(@RequestBody Movie newMovie){
+            System.out.println(newMovie);
+    }
 
+    @PostMapping("all")
+    public void createAll(@RequestBody List<Movie> movies){
+        System.out.println(movies);
+    }
 }
 
 
