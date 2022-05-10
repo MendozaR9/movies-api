@@ -34,22 +34,22 @@ public class MoviesController {
     public  Movie getById(@PathVariable int id){
 //        return sampleMovies.stream().filter((movie)->{
 //            return movie.getId() == id;
-//        })
-//                .findFirst()
-//                .orElse(null);
+//        }).findFirst().orElse(null);
         return moviesRepository.findById(id).orElse(null);
    }
 
-    private  List<Movie>setMovie() {
-        List<Movie> movie = new ArrayList<>();
-        movie.add(new Movie(1, "Test Movie", "2024", "Test director", "actor 1, actor 2", "Action",
-                "Insert something about the plot."));
-        movie.add(new Movie(2, "The Big Lebowski",
-                "1995", "The Cohen Bros",
-                "Jeff Bridges, John Goodman, Steve Buscemi", "comedy, drama?",
-                "the dude just wanted to relax and go bowling"));
-        return movie;
-    }
+   @GetMapping("Search")
+   public List<Movie> getbyTitle(@RequestParam String title){
+//        Movie movieToReturn = null;
+//       for (Movie movie: sampleMovies) {
+//           if (movie.getTitle().equals(title)){
+//               movieToReturn= movie;
+//           }
+//       }
+//       return movieToReturn;
+       return moviesRepository.findByTitle(title);
+   }
+
         @PostMapping
         public void create(@RequestBody Movie newMovie){
             System.out.println(newMovie);
@@ -60,6 +60,17 @@ public class MoviesController {
     public void createAll(@RequestBody List<Movie> movies){
         System.out.println(movies);
         moviesRepository.saveAll(movies);
+    }
+
+    private  List<Movie>setMovie() {
+        List<Movie> movie = new ArrayList<>();
+        movie.add(new Movie(1, "Test Movie", "2024", "Test director", "actor 1, actor 2", "Action",
+                "Insert something about the plot."));
+        movie.add(new Movie(2, "The Big Lebowski",
+                "1995", "The Cohen Bros",
+                "Jeff Bridges, John Goodman, Steve Buscemi", "comedy, drama?",
+                "the dude just wanted to relax and go bowling"));
+        return movie;
     }
 }
 
