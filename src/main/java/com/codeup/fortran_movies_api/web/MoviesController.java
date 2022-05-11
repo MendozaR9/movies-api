@@ -2,7 +2,10 @@ package com.codeup.fortran_movies_api.web;
 
 import com.codeup.fortran_movies_api.data.Movie;
 import com.codeup.fortran_movies_api.data.MoviesRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,17 +22,12 @@ public class MoviesController {
         this.moviesRepository=moviesRepository;
     }
 
-//    @GetMapping
-//        public Movie  one() {
-////        return new Movie();
-//        return sampleMovies.get(1);
-//    }
-
     @GetMapping("all") // path becomes: /api/movies/all
     public List<Movie> getAll(){
 //        return sampleMovies;
         return moviesRepository.findAll();
     }
+
    @GetMapping("{id}")
     public  Movie getById(@PathVariable int id){
 //        return sampleMovies.stream().filter((movie)->{
@@ -38,8 +36,8 @@ public class MoviesController {
         return moviesRepository.findById(id).orElse(null);
    }
 
-   @GetMapping("Search")
-   public List<Movie> getbyTitle(@RequestParam String title){
+   @GetMapping("Search/title")
+   public List<Movie> getByTitle(@RequestParam String title){
 //        Movie movieToReturn = null;
 //       for (Movie movie: sampleMovies) {
 //           if (movie.getTitle().equals(title)){
@@ -48,6 +46,11 @@ public class MoviesController {
 //       }
 //       return movieToReturn;
        return moviesRepository.findByTitle(title);
+   }
+
+   @GetMapping("search/year")
+   public List<Movie> getByYearRange(@RequestParam ("StartYear") String startYear, @RequestParam("endYear") String endYear){
+    return moviesRepository.findByYearRange(startYear, endYear);
    }
 
         @PostMapping
@@ -60,6 +63,15 @@ public class MoviesController {
     public void createAll(@RequestBody List<Movie> movies){
         System.out.println(movies);
         moviesRepository.saveAll(movies);
+    }
+
+    @DeleteMapping("{id}") //api/movies/{id} -> Delete
+    public  void deleteById(@PathVariable int id ){
+        try {
+            moviesRepository.deleteById(id);
+        }catch (Exception ex){
+           throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "NO matching movie with the id: "+id);
+        }
     }
 
     private  List<Movie>setMovie() {
