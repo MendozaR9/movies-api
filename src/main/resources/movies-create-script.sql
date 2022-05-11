@@ -20,14 +20,14 @@ drop table if exists  directors;
 
 create table if not exists  directors(
      id int unsigned not null  auto_increment primary key,
-     director varchar(255) not null
+     name varchar(255) not null
 );
 create table if not exists movies(
     id int unsigned not null  auto_increment,
     title varchar(255) not null,
     year varchar(120) not null ,
     poster varchar(255) ,
-    ratting char(10) not null ,
+    rating char(10) not null ,
     plot text,
     director_id int unsigned not null ,
     primary key (id),
@@ -70,18 +70,27 @@ create table if not exists movie_actor(
     foreign key (movie_id) references  movies(id),
     foreign key (actor_id) references actors(id)
 );
+insert into genres(name)
+values('comedy'),
+      ('drama'),
+      ('action'),
+      ('fantasy'),
+      ('horror'),
+      ('romance'),
+      ('hallmark romance'),
+      ('thriller');
 #Testing data base
-CREATE DATABASE IF NOT EXISTS movies_db;
-
-USE movies_db;
-
-CREATE TABLE IF NOT EXISTS movies(
-                                     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-                                     title VARCHAR(255) NOT NULL,
-                                     year CHAR(4) NOT NULL,
-                                     plot TEXT,
-                                     PRIMARY KEY (id)
-);
+# CREATE DATABASE IF NOT EXISTS movies_db;
+#
+# USE movies_db;
+#
+# CREATE TABLE IF NOT EXISTS movies(
+#                                      id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+#                                      title VARCHAR(255) NOT NULL,
+#                                      year CHAR(4) NOT NULL,
+#                                      plot TEXT,
+#                                      PRIMARY KEY (id)
+# );
 
 
 
