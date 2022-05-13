@@ -38,8 +38,12 @@ public class Movie {
         this.actors = actors;
     }
 
-    @ManyToMany(mappedBy = "movies")
+    @ManyToMany(cascade = CascadeType.ALL)
     @JsonIgnoreProperties("movies")
+    @JoinTable(name="movie_actor",
+            joinColumns = @JoinColumn(name ="movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id")
+    )
     private List<Actor> actors;
 
     public Movie(int id, String title, String year, String plot, String poster, String rating) {

@@ -20,11 +20,13 @@ public class MoviesController {
     private final MoviesRepository moviesRepository;
     private  final DirectorsRepository directorsRepository;
     private final GenresRepository genresRepository;
+    private final ActorRepository actorRepository;
 
-    public  MoviesController(MoviesRepository moviesRepository, DirectorsRepository directorsRepository, GenresRepository genresRepository){
+    public  MoviesController(MoviesRepository moviesRepository, DirectorsRepository directorsRepository, GenresRepository genresRepository, ActorRepository actorRepository){
         this.moviesRepository=moviesRepository;
         this.directorsRepository = directorsRepository;
         this.genresRepository = genresRepository;
+        this.actorRepository = actorRepository;
     }
 
     @GetMapping("all") // path becomes: /api/movies/all
@@ -108,6 +110,20 @@ public class MoviesController {
                 }
             }
             movieToAdd.setGenres(movieGenres);
+
+            String [] actors = movieDto.getActors().split(", ");
+            List<Actor> movieActors = new ArrayList<>();
+            for (String actor : actors){
+                Actor actorInDb = actorRepository.findActorByName(actor);
+                System.out.println(actorInDb);
+                if (actorInDb==null){
+                    Actor newActor = new Actor(actor);
+                    movieActors.add(actorRepository.save(newActor));
+                }else {
+                    movieActors.add(actorInDb);
+                }
+                movieToAdd.setActors(movieActors);
+            }
             moviesRepository.save(movieToAdd);
     }
 

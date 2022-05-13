@@ -32,6 +32,10 @@ public class Actor {
     public Actor() {
     }
 
+    public Actor(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }
