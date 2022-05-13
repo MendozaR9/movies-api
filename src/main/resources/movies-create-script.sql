@@ -70,6 +70,11 @@ create table if not exists movie_actor(
     foreign key (movie_id) references  movies(id),
     foreign key (actor_id) references actors(id)
 );
+
+insert into directors(name)value
+    ('Joe Smith'),
+    ('John Williams');
+
 insert into genres(name)
 values('comedy'),
       ('drama'),
@@ -79,6 +84,24 @@ values('comedy'),
       ('romance'),
       ('hallmark romance'),
       ('thriller');
+
+INSERT INTO  movie_genre(movie_id, genre_id)
+values (1,1),
+       (1,2),
+       (1,3);
+
+insert into movie_actor(movie_id, actor_id)
+values (1,1),
+       (1,3),
+       (1,4),
+       (2,3),
+
+
+insert into actors(name)
+values ('Billy Bob'),
+       ('Will Smith'),
+       ('Duck'),
+       ('Bobby Boi');
 #Testing data base
 # CREATE DATABASE IF NOT EXISTS movies_db;
 #
