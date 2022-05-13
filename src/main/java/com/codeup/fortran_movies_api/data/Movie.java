@@ -14,11 +14,13 @@ public class Movie {
     private int id;
     private String title;
     private String year;
-    @ManyToOne
-    private Director director;
     private String poster;
     private  String rating;
     private String plot;
+
+    @ManyToOne
+    @JsonIgnoreProperties("directedMovies")
+    private Director director;
 
     @ManyToMany(mappedBy = "movies")
     @JsonIgnoreProperties("movies")
@@ -36,6 +38,14 @@ public class Movie {
     @JsonIgnoreProperties("movies")
     private List<Actor> actors;
 
+    public Movie(int id, String title, String year, String plot, String poster, String rating) {
+        this.id = id;
+        this.title = title;
+        this.year = year;
+        this.plot = plot;
+        this.poster = poster;
+        this.rating = rating;
+    }
     public Movie() {
     }
 
@@ -60,15 +70,6 @@ public class Movie {
     }
 
     public void setRating(String rating) {
-        this.rating = rating;
-    }
-
-    public Movie(int id, String title, String year, String plot, String poster, String rating) {
-        this.id = id;
-        this.title = title;
-        this.year = year;
-        this.plot = plot;
-        this.poster = poster;
         this.rating = rating;
     }
 

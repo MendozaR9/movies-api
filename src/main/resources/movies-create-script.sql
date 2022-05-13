@@ -94,7 +94,7 @@ insert into movie_actor(movie_id, actor_id)
 values (1,1),
        (1,3),
        (1,4),
-       (2,3),
+       (2,3);
 
 
 insert into actors(name)

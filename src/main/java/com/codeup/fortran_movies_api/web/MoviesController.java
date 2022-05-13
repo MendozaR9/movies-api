@@ -1,15 +1,14 @@
 package com.codeup.fortran_movies_api.web;
 
-import com.codeup.fortran_movies_api.data.Director;
-import com.codeup.fortran_movies_api.data.DirectorsRepository;
-import com.codeup.fortran_movies_api.data.Movie;
-import com.codeup.fortran_movies_api.data.MoviesRepository;
+import com.codeup.fortran_movies_api.data.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin //this is to help with local dev testing
  @RestController
@@ -28,6 +27,19 @@ public class MoviesController {
 
     @GetMapping("all") // path becomes: /api/movies/all
     public List<Movie> getAll(){
+        List<Movie> movieEntitles = moviesRepository.findAll();
+        List<MovieDto> movieDto = new ArrayList<>();
+        for (Movie movie: movieEntitles) {
+            movieDto.add(new MovieDto(movie.getId(),
+                    movie.getTitle(),
+                    movie.getYear(),
+                    movie.getPlot(),
+                    movie.getPoster(),
+                    movie.getRating(),
+                    movie.getDirector().getName(),
+                    movie.getGenres().stream().map(Genre::getName).collect(Collectors.joining(", "))
+                    ));
+        }
         return moviesRepository.findAll();
     }
 

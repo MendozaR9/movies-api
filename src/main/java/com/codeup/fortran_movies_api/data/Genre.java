@@ -14,12 +14,11 @@ public class Genre {
 
     @ManyToMany
     @JoinTable(name="movie_genre",
-    joinColumns =
-            @JoinColumn(name ="genre_id", referencedColumnName = "id"),
-    inverseJoinColumns =
-            @JoinColumn(name = "movie_id", referencedColumnName = "id")
+    joinColumns = @JoinColumn(name ="genre_id", referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "id")
     )
     private List<Movie> movies;
+
     public Genre(int id, String name) {
         this.id = id;
         this.name = name;
@@ -42,6 +41,10 @@ public class Genre {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Movie> getMovies() {
+        return movies;
     }
 
     @Override
