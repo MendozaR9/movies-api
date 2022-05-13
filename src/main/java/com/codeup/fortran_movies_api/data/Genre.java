@@ -1,5 +1,7 @@
 package com.codeup.fortran_movies_api.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,13 +16,17 @@ public class Genre {
 
     @ManyToMany
     @JoinTable(name="movie_genre",
-    joinColumns = @JoinColumn(name ="genre_id", referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "id")
+    joinColumns = @JoinColumn(name ="genre_id"),
+    inverseJoinColumns = @JoinColumn(name = "movie_id")
     )
     private List<Movie> movies;
 
     public Genre(int id, String name) {
         this.id = id;
+        this.name = name;
+    }
+
+    public Genre(String name) {
         this.name = name;
     }
 

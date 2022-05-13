@@ -1,5 +1,7 @@
 package com.codeup.fortran_movies_api.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class Actor {
     inverseJoinColumns =
     @JoinColumn(name = "movie_id", referencedColumnName = "id")
     )
+    @JsonIgnoreProperties("")
     private List<Movie> movies;
 
 
@@ -43,6 +46,10 @@ public class Actor {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Movie> getMovies() {
+        return movies;
     }
 
     @Override

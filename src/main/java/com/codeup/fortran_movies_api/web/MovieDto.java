@@ -9,9 +9,9 @@ public class MovieDto {
     private String genre;
     private String director;
     private String plot;
-//    private String actor;
+    private String actors;
 
-    public MovieDto(int id, String title, String rating, String poster, String year, String genre, String director, String plot/*, String actor*/) {
+    public MovieDto(int id, String title, String rating, String poster, String year, String genre, String director, String plot, String actor) {
         this.id = id;
         this.title = title;
         this.rating = rating;
@@ -20,7 +20,7 @@ public class MovieDto {
         this.genre = genre;
         this.director = director;
         this.plot = plot;
-//        this.actor = actor;
+        this.actors = actor;
     }
 
     public int getId() {
@@ -87,13 +87,13 @@ public class MovieDto {
         this.plot = plot;
     }
 
-//    public String getActor() {
-//        return actor;
-//    }
-//
-//    public void setActor(String actor) {
-//        this.actor = actor;
-//    }
+    public String getActors() {
+        return actors;
+    }
+
+    public void setActors(String actors) {
+        this.actors = actors;
+    }
 
     @Override
     public String toString() {
@@ -106,7 +106,7 @@ public class MovieDto {
                 ", genre='" + genre + '\'' +
                 ", director='" + director + '\'' +
                 ", plot='" + plot + '\'' +
-//                ", actor='" + actor + '\'' +
+                ", actors='" + actors + '\'' +
                 '}';
     }
 }

@@ -22,8 +22,12 @@ public class Movie {
     @JsonIgnoreProperties("directedMovies")
     private Director director;
 
-    @ManyToMany(mappedBy = "movies")
+    @ManyToMany(cascade = CascadeType.ALL)
     @JsonIgnoreProperties("movies")
+    @JoinTable(name="movie_genre",
+            joinColumns = @JoinColumn(name ="movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
     private List<Genre> genres;
 
     public List<Actor> getActors() {
@@ -46,6 +50,16 @@ public class Movie {
         this.poster = poster;
         this.rating = rating;
     }
+
+    public Movie(String title, String year, String poster, String rating, String plot) {
+        this.title = title;
+        this.year = year;
+        this.poster = poster;
+        this.rating = rating;
+        this.plot = plot;
+
+    }
+
     public Movie() {
     }
 

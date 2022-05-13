@@ -19,28 +19,31 @@ public class MoviesController {
 
     private final MoviesRepository moviesRepository;
     private  final DirectorsRepository directorsRepository;
+    private final GenresRepository genresRepository;
 
-    public  MoviesController(MoviesRepository moviesRepository, DirectorsRepository directorsRepository){
+    public  MoviesController(MoviesRepository moviesRepository, DirectorsRepository directorsRepository, GenresRepository genresRepository){
         this.moviesRepository=moviesRepository;
         this.directorsRepository = directorsRepository;
+        this.genresRepository = genresRepository;
     }
 
     @GetMapping("all") // path becomes: /api/movies/all
-    public List<Movie> getAll(){
+    public List<MovieDto> getAll(){
         List<Movie> movieEntitles = moviesRepository.findAll();
         List<MovieDto> movieDto = new ArrayList<>();
         for (Movie movie: movieEntitles) {
             movieDto.add(new MovieDto(movie.getId(),
                     movie.getTitle(),
-                    movie.getYear(),
-                    movie.getPlot(),
-                    movie.getPoster(),
                     movie.getRating(),
+                    movie.getPoster(),
+                    movie.getYear(),
+                    movie.getGenres().stream().map(Genre::getName).collect(Collectors.joining(", ")),
                     movie.getDirector().getName(),
-                    movie.getGenres().stream().map(Genre::getName).collect(Collectors.joining(", "))
+                    movie.getPlot(),
+                    movie.getActors().stream().map(Actor::getName).collect(Collectors.joining(", "))
                     ));
         }
-        return moviesRepository.findAll();
+        return movieDto;
     }
 
    @GetMapping("{id}")
@@ -73,9 +76,39 @@ public class MoviesController {
 
 
         @PostMapping
-        public void create(@RequestBody Movie newMovie){
-            System.out.println(newMovie);
-            moviesRepository.save(newMovie);
+        public void create(@RequestBody MovieDto movieDto){
+            System.out.println(movieDto);
+            Movie movieToAdd =new Movie(
+                    movieDto.getTitle(),
+                    movieDto.getYear(),
+                    movieDto.getPoster(),
+                    movieDto.getRating(),
+                    movieDto.getPlot()
+            );
+
+            List<Director> directorInDb = directorsRepository.findByName(movieDto.getDirector());
+            System.out.println(directorInDb);
+            if (directorInDb.isEmpty()){
+                Director newDirector = new Director(movieDto.getDirector());
+                movieToAdd.setDirector(directorsRepository.save(newDirector));
+            }else {
+                movieToAdd.setDirector(directorInDb.get(0));
+            }
+
+            String [] genres = movieDto.getGenre().split(", ");
+            List<Genre> movieGenres = new ArrayList<>();
+            for (String genre :genres) {
+                Genre genreInDb= genresRepository.findGenreByName(genre);
+                System.out.println(genreInDb);
+                if (genreInDb == null){
+                    Genre newGenre = new Genre(genre);
+                   movieGenres.add(genresRepository.save(newGenre));
+                }else {
+                    movieGenres.add(genreInDb);
+                }
+            }
+            movieToAdd.setGenres(movieGenres);
+            moviesRepository.save(movieToAdd);
     }
 
     @PostMapping("all")
@@ -92,6 +125,7 @@ public class MoviesController {
            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "NO matching movie with the id: "+id);
         }
     }
+
 
 //    private  List<Movie>setMovie() {
 //        List<Movie> movie = new ArrayList<>();
